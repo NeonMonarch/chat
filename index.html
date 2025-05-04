@@ -5,86 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Чатикy</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-    }
+    body {
+  background-color: rgba(0, 0, 0, 0); /* прозрачный фон */
+  margin: 0;
+  overflow: hidden;
+  font-family: Consolas, monospace;
+}
 
-    #chat-container {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
-      padding: 12px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      gap: 8px;
-      color: white;
-      font-size: 16px;
-    }
+#log {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
 
-    .chat-message {
-      display: flex;
-      align-items: flex-start;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 10px 14px;
-      border-left: 4px solid #00ffe7;
-      border-radius: 8px;
-      animation: fadeIn 0.5s ease-out, slideUp 0.5s ease-out;
-      backdrop-filter: blur(6px);
-    }
+.chat-line__message,
+.message {
+  color: #ffffff;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px #000000;
+  margin-bottom: 4px;
+  word-break: break-word;
+  line-height: 1.4;
+}
 
-    .chat-message .author {
-      color: #00ffe7;
-      font-weight: bold;
-      margin-right: 8px;
-      text-shadow: 0 0 4px #00ffe7;
-      animation: glow 2s infinite alternate;
-    }
+.chat-author,
+.from {
+  font-weight: bold;
+  color: #5fdde5;
+  margin-right: 6px;
+}
 
-    .chat-message .text {
-      flex: 1;
-      word-break: break-word;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(10px); }
-      to { transform: translateY(0); }
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 4px #00ffe7; }
-      100% { text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7; }
-    }
-
-    /* Optional: glowing border pulse for entire chat area */
-    #chat-container::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 2px solid rgba(0,255,231,0.3);
-      border-radius: 12px;
-      pointer-events: none;
-      animation: borderPulse 3s infinite ease-in-out;
-    }
-
-    @keyframes borderPulse {
-      0%, 100% {
-        box-shadow: 0 0 0px rgba(0,255,231,0.2);
-      }
-      50% {
-        box-shadow: 0 0 12px rgba(0,255,231,0.4), 0 0 24px rgba(0,255,231,0.2);
-      }
-    }
+.deleted {
+  display: none !important;
+}
   </style>
 </head>
 <body>
